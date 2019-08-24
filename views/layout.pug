@@ -1,0 +1,22 @@
+doctype html
+
+html(lang='en')
+  head
+    meta(charset='utf-8')
+
+    title CSRF Demonstration
+    meta(name='description' content='Demonstrating the CSRF vulnerability')
+    meta(name='author' content='Josh Graber')
+
+    link(rel='stylesheet', type='text/css', href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css')
+    link(rel='stylesheet', type='text/css', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css')
+
+    link(rel='stylesheet', type='text/css', href='css/styles.css')
+
+  body
+    div.app
+      nav.navbar.navbar-expand-lg.navbar-light.bg-light.justify-content-between
+        span.navbar-brand Security Samples: CSRF
+      div.container
+        block content
+    script(src='generated/js/app.js' type='application/javascript')

@@ -1,0 +1,18 @@
+extends layout.pug
+
+mixin cookie_form
+  form(method='post', action='/cookie')
+    div.form-group
+      input.form-control(placeholder='Name', type='text', name='name', id='name')
+
+    div.form-group
+      button.btn.btn-primary(type='submit') Set cookie
+
+block content
+  div.main
+    p
+      | This application attempts to demonstrate how a CSRF attack 
+      | could exploit an application vulnerability
+    +cookie_form
+  div.sidebar#log
+    h3 Log
