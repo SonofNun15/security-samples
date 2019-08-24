@@ -8,8 +8,8 @@ root = true
 end_of_line = lf
 insert_final_newline = true
 
-# Indentation for all JS
-[**.js]
+# Indentation for typescript, javascript, PugJs, and CSS
+[**.ts, **.js, **.pug, **.css]
 charset = utf-8
 indent_style = space
 indent_size = 2
