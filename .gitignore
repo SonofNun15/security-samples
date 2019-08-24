@@ -1,3 +1,9 @@
+# wepback generated files
+/assets/generated
+
+# compiled files
+/build
+
 # Logs
 logs
 *.log
