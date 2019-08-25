@@ -4,6 +4,6 @@ import { appendLogMessage } from './log'
 
 const socket = io()
 
-socket.on('log', (message: string) => {
-  appendLogMessage(message)
+socket.on('log', (messages: string[]) => {
+  appendLogMessage(messages)
 })

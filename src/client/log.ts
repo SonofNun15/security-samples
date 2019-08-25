@@ -1,11 +1,14 @@
 import { getLogControl } from './controls'
 
-export function appendLogMessage(message: string) {
+export function appendLogMessage(messages: string[]) {
   const log = getLogControl()
+
+  const message = messages.map(m => `<span>${m}</span>`).join('<br />')
 
   if (!log) { return }
   const entry = document.createElement('p');
-  entry.innerText = message
+
+  entry.innerHTML = message
 
   log.appendChild(entry)
 }

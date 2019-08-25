@@ -10,8 +10,29 @@ export function start(port: number) {
   config(app)
   enableSockets(server)
 
-  app.get('/', (_req, res) => {
-    res.render('index')
+  app.get('/', (req, res) => {
+    debugger;
+    const name = req.cookies.name
+    sendLog('GET => /', `Cookies: ${JSON.stringify(req.cookies)}`)
+    res.render('index', { name })
+  })
+
+  app.post('/cookie', (req, res) => {
+    const name = req.body.name
+    sendLog(`POST => /cookie: ${JSON.stringify(req.body)}`)
+    res.cookie('name', name)
+    res.sendStatus(204)
+  })
+
+  app.get('/hello', (req, res) => {
+    sendLog('GET => /hello', `Cookies: ${JSON.stringify(req.cookies)}`)
+    res.send(':wave:')
+  })
+
+  app.post('/poke', (req, res) => {
+    sendLog(`POST => /poke: ${JSON.stringify(req.body)}`,
+            `Cookies: ${JSON.stringify(req.cookies)}`)
+    res.send('ouch!')
   })
 
   app.get('/test', (_req, res) => {

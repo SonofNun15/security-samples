@@ -7,7 +7,7 @@ export function enable(http: http.Server): void {
   io = socketio(http)
 }
 
-export function sendLog(message: string) {
+export function sendLog(...message: string[]) {
   if (!!io) {
     io.emit('log', message)
   }
