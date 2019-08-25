@@ -32,7 +32,7 @@ export function start(port: number) {
   app.post('/poke', (req, res) => {
     sendLog(`POST => /poke: ${JSON.stringify(req.body)}`,
             `Cookies: ${JSON.stringify(req.cookies)}`)
-    res.send('ouch!')
+    res.render('poke')
   })
 
   app.get('/test', (_req, res) => {

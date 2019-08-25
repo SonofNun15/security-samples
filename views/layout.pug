@@ -14,9 +14,12 @@ html(lang='en')
     link(rel='stylesheet', type='text/css', href='css/styles.css')
 
   body
-    div.app
+    .app
       nav.navbar.navbar-expand-lg.navbar-light.bg-light.justify-content-between
         span.navbar-brand Security Samples: CSRF
-      div.container
-        block content
+      .container
+        .main
+          block content
+        .sidebar#log
+          h3 Log
     script(src='generated/js/app.js' type='application/javascript')

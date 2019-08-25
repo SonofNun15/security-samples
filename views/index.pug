@@ -2,19 +2,24 @@ extends layout.pug
 
 mixin cookie_form
   form(method='post', action='/cookie')
-    div.form-group
+    .form-group
       input.form-control(placeholder='Name', type='text', name='name', id='name')
 
-    div.form-group
+    .form-group
       button.btn.btn-primary(type='submit') Set cookie
 
+mixin poke_form
+  form(method='post', action='/poke')
+    .form-group
+      button.btn.btn-danger(type='submit') Poke
+
 block content
-  div.main
-    if !!name
-      p Hi, #{name}! (from cookie)
-    p
-      | This application attempts to demonstrate how a CSRF attack 
-      | could exploit an application vulnerability
+  if !!name
+    p Hi, #{name}! (from cookie)
+  p
+    | This application attempts to demonstrate how a CSRF attack 
+    | could exploit an application vulnerability
+  div
     +cookie_form
-  div.sidebar#log
-    h3 Log
+  div
+    +poke_form
