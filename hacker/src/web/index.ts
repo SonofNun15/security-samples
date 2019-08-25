@@ -6,8 +6,12 @@ export function start(port: number) {
 
   config(app)
 
-  app.get('/', (req, res) => {
+  app.get('/', (_req, res) => {
     res.render('index')
+  })
+
+  app.get('/iframe', (_req, res) => {
+    res.render('index2')
   })
 
   app.get('/test', (_req, res) => {

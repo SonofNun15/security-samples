@@ -1,8 +1,8 @@
 # wepback generated files
-assets/generated/
+*/assets/generated/
 
 # compiled files
-build/
+*/build/
 
 # Logs
 logs
