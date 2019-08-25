@@ -1,0 +1,21 @@
+extends layout.pug
+
+mixin login_form
+  form(method='post', action='/login')
+    .form-group
+      input.form-control(placeholder='Username', type='text', name='username', id='username')
+
+    .form-group
+      input.form-control(placeholder='Password', type='password', name='password', id='password')
+
+    .form-group
+      button.btn.btn-primary(type='submit') Login
+
+block content
+  if !!name
+    p Hi, #{name}! (from cookie)
+  p
+    | This application attempts to demonstrate how a CSRF attack 
+    | could exploit an application vulnerability
+  div
+    +login_form

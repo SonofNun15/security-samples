@@ -39,6 +39,11 @@ export function start(port: number) {
     sendLog('GET => /test')
   })
 
+  app.get('/login', (req, res) => {
+    const name = req.cookies.name
+    res.render('login', { name })
+  })
+
   console.log(`- listening on port ${port} `)
   server.listen(port)
 }
