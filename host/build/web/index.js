@@ -20,7 +20,6 @@ function start(port) {
     config_1.default(app);
     sockets_1.enable(server);
     app.get('/', function (req, res) {
-        debugger;
         var name = req.cookies.name;
         sockets_1.sendLog('GET => /', "Cookies: " + JSON.stringify(req.cookies));
         res.render('index', { name: name });
@@ -37,7 +36,7 @@ function start(port) {
     });
     app.post('/poke', function (req, res) {
         sockets_1.sendLog("POST => /poke: " + JSON.stringify(req.body), "Cookies: " + JSON.stringify(req.cookies));
-        res.send('ouch!');
+        res.render('poke');
     });
     app.get('/test', function (_req, res) {
         res.send('hi there');

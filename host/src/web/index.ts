@@ -11,7 +11,6 @@ export function start(port: number) {
   enableSockets(server)
 
   app.get('/', (req, res) => {
-    debugger;
     const name = req.cookies.name
     sendLog('GET => /', `Cookies: ${JSON.stringify(req.cookies)}`)
     res.render('index', { name })

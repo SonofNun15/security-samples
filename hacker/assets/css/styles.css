@@ -1,0 +1,46 @@
+html, body {
+  height: 100%;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.app > .container {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  flex-grow: 1;
+  padding: 1rem;
+}
+
+.main {
+  flex-grow: 1;
+  flex-basis: 0;
+  padding-right: 1em;
+}
+
+.sidebar {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+#log {
+  border: 1px solid lime;
+  background-color: black;
+  color: #eee;
+  padding: 1rem;
+  height: 100%;
+  word-break: break-word;
+  overflow-y: auto;
+}
+
+#log p {
+  font-family: "Consolas", monospace;
+}
+
+#log h3 {
+  border-bottom: 1px solid #999;
+}
