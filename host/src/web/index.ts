@@ -74,6 +74,12 @@ export function start(port: number) {
     }
   })
 
+  app.post('/logout', (req, res) => {
+    logPost('/logout', req)
+    res.clearCookie('jwt')
+    res.redirect('/login')
+  })
+
   console.log(`- listening on port ${port} `)
   server.listen(port)
 }

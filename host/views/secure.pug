@@ -16,6 +16,10 @@ mixin money_form
         i.fa.fa-money-bill-wave
         span &nbsp; Send money
 
+mixin logout
+  form(method='post' action='/logout')
+    button.btn.btn-danger(type='submit') Logout
+
 block content
   if !!name
     p Hi, #{name}! (from cookie)
@@ -26,3 +30,5 @@ block content
     | Would you like to securely send money to your buddy?
   div
     +money_form
+  div
+    +logout
