@@ -1,3 +1,7 @@
+import jwtlib from 'jsonwebtoken'
+import secret from './secret'
+import { sendLog } from '../comm/sockets';
+
 interface LoginData {
   username: string
   password: string
@@ -5,11 +9,12 @@ interface LoginData {
 
 class Authentication {
   jwt: string | null = null
+  token: string | object | null = null
 
   login({ username, password }: LoginData) {
     if (username == 'jgraber' &&
         password == 'testpass') {
-      this.jwt = 'test'
+      this.jwt = jwtlib.sign({}, secret(), { subject: username })
       return true
     } else {
       return false
@@ -17,7 +22,13 @@ class Authentication {
   }
 
   verify(jwt: string) {
-    return true
+    try {
+      this.token = jwtlib.verify(jwt, secret())
+      return true
+    } catch (Error) {
+      sendLog('Failed to authenticate')
+      return false
+    }
   }
 }
 
