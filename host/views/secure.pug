@@ -1,0 +1,28 @@
+extends layout.pug
+
+mixin money_form 
+  form(method='post', action='/money')
+    .form-group
+      input.form-control(placeholder='Destination', type='text', name='dest', id='dest')
+
+    .form-group
+      .input-group
+        .input-group-prepend
+          span.input-group-text $
+        input.form-control(placeholder='Amount', type='number', name='amount', id='amount')
+
+    .form-group
+      button.btn.btn-primary(type='submit')
+        i.fa.fa-money-bill-wave
+        span &nbsp; Send money
+
+block content
+  if !!name
+    p Hi, #{name}! (from cookie)
+  p
+    | This application demonstrates how a CSRF attack 
+    | could exploit an application vulnerability
+  p
+    | Would you like to securely send money to your buddy?
+  div
+    +money_form

@@ -12,10 +12,13 @@ mixin login_form
       button.btn.btn-primary(type='submit') Login
 
 block content
+  if !!message
+    .alert.alert-danger(role='alert')
+      =message
   if !!name
     p Hi, #{name}! (from cookie)
   p
-    | This application attempts to demonstrate how a CSRF attack 
+    | This application demonstrates how a CSRF attack 
     | could exploit an application vulnerability
   div
     +login_form
