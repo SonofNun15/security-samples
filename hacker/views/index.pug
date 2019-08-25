@@ -1,14 +1,11 @@
 extends layout.pug
 
-mixin dog_form
-  form(method='post', action='http://localhost:3000/poke')
-    button.btn.btn-success(type='submit')
-      i.fa.fa-heart
-      span &nbsp; I LOVE dogs!
-
 block content
-  p
-    | Hello, dog lover! | I'm busy phishing you! 
-    | But I know you really love dogs so you will fall for my scheme! :D
-  div
-    +dog_form
+  h2 CSRF Vulnerability Samples
+  ul
+    li
+      a(href='/obvious') Demonstration 1
+    li
+      a(href='/iframe') Demonstration 2 (IFRAME)
+    li
+      a(href='/get') Demonstration 3 (HTTP GET)

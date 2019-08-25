@@ -10,8 +10,16 @@ export function start(port: number) {
     res.render('index')
   })
 
+  app.get('/obvious', (_req, res) => {
+    res.render('obvious')
+  })
+
   app.get('/iframe', (_req, res) => {
-    res.render('index2')
+    res.render('iframe')
+  })
+
+  app.get('/get', (_req, res) => {
+    res.render('get')
   })
 
   app.get('/test', (_req, res) => {
