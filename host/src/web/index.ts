@@ -14,21 +14,20 @@ export function start(port: number) {
   app.get('/', (req, res) => {
     logGet('/', req)
     const name = req.cookies.name
-    sendLog('GET => /', `Cookies: ${JSON.stringify(req.cookies)}`)
     res.render('index', { name })
   })
 
   app.post('/cookie', (req, res) => {
     logPost('/cookie', req)
     const name = req.body.name
-    sendLog(`POST => /cookie: ${JSON.stringify(req.body)}`)
-    res.cookie('name', name)
+    const httpOnly = !!req.body.httpOnly
+    const path = req.body.path || '/'
+    res.cookie('name', name, { httpOnly, path })
     res.sendStatus(204)
   })
 
   app.get('/hello', (req, res) => {
     logGet('/hello', req)
-    sendLog('GET => /hello', `Cookies: ${JSON.stringify(req.cookies)}`)
     res.send(':wave:')
   })
 
@@ -78,6 +77,12 @@ export function start(port: number) {
     logPost('/logout', req)
     res.clearCookie('jwt')
     res.redirect('/login')
+  })
+
+  app.get('/cookie', (req, res) => {
+    logGet('/cookie', req)
+    const name = req.cookies.name
+    res.render('cookie', { name })
   })
 
   console.log(`- listening on port ${port} `)
