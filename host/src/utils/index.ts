@@ -5,3 +5,7 @@ export function maybeParseInt(value: string | undefined): number {
       return NaN
   }
 }
+
+export function isEmpty(str: string) {
+  return (!str || 0 === str.length);
+}
