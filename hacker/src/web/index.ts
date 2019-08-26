@@ -22,8 +22,8 @@ export function start(port: number) {
     res.render('get')
   })
 
-  app.get('/test', (_req, res) => {
-    res.send('hi there')
+  app.get('/steal', (_req, res) => {
+    res.render('steal')
   })
 
   console.log(`- listening on port ${port} `)
