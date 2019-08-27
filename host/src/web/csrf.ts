@@ -1,9 +1,12 @@
 import express from 'express'
+import uuid from 'uuid/v4'
 
 import { logGet, logPost, sendLog } from '../utils/log'
 import auth from '../auth'
 
 const router = express.Router()
+
+const anti_forgery_token = uuid()
 
 // ####################################################
 // # Play with cookies and demonstrate how CSRF works #
@@ -59,7 +62,7 @@ router.post('/login', (req, res) => {
 router.get('/secure', (req, res) => {
   logGet('/secure', req)
   if (auth.verify(req.cookies.jwt)) {
-    res.render('csrf/secure')
+    res.render('csrf/secure', { anti_forgery_token })
   } else {
     res.render('csrf/login', { message: 'You must login to view this page!' })
   }
@@ -67,9 +70,17 @@ router.get('/secure', (req, res) => {
 
 router.post('/money', (req, res) => {
   logPost('/money', req)
+
+  // Require anti forgery token to prevent CSRF attacks
+  if (req.body['csrf-token'] !== anti_forgery_token) {
+    sendLog('REQUEST sent without anti forgery token, could be a CSRF attack!!!')
+    res.render('csrf/login', { message: 'Request was not authenticated properly' })
+    return
+  }
+
   if (auth.verify(req.cookies.jwt)) {
     sendLog(`SENDING $${req.body.amount} TO "${req.body.dest}"!!!`)
-    res.render('csrf/secure')
+    res.render('csrf/secure', { anti_forgery_token })
   } else {
     res.render('csrf/login', { message: 'You must be logged in to perform this operation!' })
   }
