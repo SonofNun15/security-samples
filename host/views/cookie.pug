@@ -1,37 +1,17 @@
 extends layout.pug
 
 mixin cookie_form
-  form(method='post' action='/cookie')
+  form(method='post', action='/cookie')
     .form-group
-      input.form-control(placeholder='Name' type='text' name='name' id='name')
-
-    .form-group.row
-      label.col-form-label.col-md-2(for='domain') Domain:
-      div.col-md-10
-        input.form-control-plaintext(type='text' readonly id='domain' value='localhost')
-
-    .form-group.row
-      label.col-form-label.col-md-2(for='path') Path:
-      div.col-md-10
-        input.form-control(placeholder='Path' type='text' name='path' id='path' value='/')
-
-    .form-group
-      .custom-control.custom-checkbox
-        input.custom-control-input(type='checkbox' id='httpOnly' name='httpOnly')
-        label.custom-control-label(for='httpOnly') HttpOnly
-
-    .form-group
-      .custom-control.custom-checkbox
-        input.custom-control-input(type='checkbox' id='signed' name='signed' disabled)
-        label.custom-control-label(for='signed') Signed
-        
-    .form-group
-      .custom-control.custom-checkbox
-        input.custom-control-input(type='checkbox' id='secure' name='secure' disabled)
-        label.custom-control-label(for='secure') Secure
+      input.form-control(placeholder='Name', type='text', name='name', id='name')
 
     .form-group
       button.btn.btn-primary(type='submit') Set cookie
+
+mixin poke_form
+  form(method='post', action='/poke')
+    .form-group
+      button.btn.btn-danger(type='submit') Poke
 
 block content
   if !!name
@@ -42,6 +22,4 @@ block content
   div
     +cookie_form
   div
-    button.btn.btn-info#cookie Get cookie
-  div
-    p#cookie-display
+    +poke_form

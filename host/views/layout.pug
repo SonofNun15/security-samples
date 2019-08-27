@@ -4,8 +4,8 @@ html(lang='en')
   head
     meta(charset='utf-8')
 
-    title CSRF Demonstration: HOST / TARGET
-    meta(name='description' content='Demonstrating the CSRF vulnerability')
+    title Security Demonstrations: HOST / TARGET
+    meta(name='description' content='Demonstrating security vulnerabilities')
     meta(name='author' content='Josh Graber')
 
     link(rel='stylesheet', type='text/css', href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css')
@@ -16,10 +16,8 @@ html(lang='en')
   body
     .app
       nav.navbar.navbar-expand-lg.navbar-light.bg-light.justify-content-between
-        span.navbar-brand Security Samples: CSRF... HOST / TARGET
-      .container
-        .main
-          block content
-        .sidebar#log
-          h3 Log
+        a.navbar-brand(href='/') Security Samples: HOST / TARGET
+      .container.mt-3
+        block content
+
     script(src='generated/js/app.js' type='application/javascript')

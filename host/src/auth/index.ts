@@ -1,6 +1,6 @@
 import jwtlib from 'jsonwebtoken'
 import secret from './secret'
-import { sendLog } from '../comm/sockets';
+import { sendLog } from '../utils/log';
 
 interface LoginData {
   username: string

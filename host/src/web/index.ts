@@ -1,7 +1,7 @@
 import express from 'express'
 import * as http from 'http'
 import config from './config'
-import { enable as enableSockets, sendLog, logGet, logPost } from '../comm/sockets'
+import { sendLog, logGet, logPost } from '../utils/log'
 import auth from '../auth'
 
 export function start(port: number) {
@@ -9,12 +9,17 @@ export function start(port: number) {
   const server = http.createServer(app)
 
   config(app)
-  enableSockets(server)
 
   app.get('/', (req, res) => {
     logGet('/', req)
     const name = req.cookies.name
     res.render('index', { name })
+  })
+
+  app.get('/cookie', (req, res) => {
+    logGet('/cookie', req)
+    const name = req.cookies.name
+    res.render('cookie', { name })
   })
 
   app.post('/cookie', (req, res) => {
@@ -79,10 +84,10 @@ export function start(port: number) {
     res.redirect('/login')
   })
 
-  app.get('/cookie', (req, res) => {
-    logGet('/cookie', req)
+  app.get('/adv-cookie', (req, res) => {
+    logGet('/adv-cookie', req)
     const name = req.cookies.name
-    res.render('cookie', { name })
+    res.render('adv-cookie', { name })
   })
 
   console.log(`- listening on port ${port} `)

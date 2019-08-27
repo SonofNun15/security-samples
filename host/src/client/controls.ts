@@ -1,7 +1,3 @@
-export function getLogControl() {
-  return document.getElementById('log')
-}
-
 export function getCookieButton() {
   return document.getElementById('cookie')
 }
