@@ -1,0 +1,41 @@
+doctype html
+
+mixin login_form
+  form(method='post', action='/login')
+    .form-group
+      input.form-control(placeholder='Username', type='text', name='username', id='username')
+
+    .form-group
+      input.form-control(placeholder='Password', type='password', name='password', id='password')
+
+    .form-group
+      button.btn.btn-primary(type='submit') Login
+
+mixin content
+  p Hi, Josh! (from cookie)
+  p
+    | Now we will demonstrate a simple login process with a cookie based JWT
+    | used to track / manage session for future requests.
+  p (jgraber/testpass)
+  div
+    +login_form
+
+  h2 &#x1F608;
+
+html(lang='en')
+  head
+    meta(charset='utf-8')
+
+    title Security Demonstrations: HOST / TARGET
+    meta(name='description' content='Demonstrating security vulnerabilities')
+    meta(name='author' content='Josh Graber')
+
+    link(rel='stylesheet', type='text/css', href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css')
+    link(rel='stylesheet', type='text/css', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css')
+
+  body
+    .app
+      nav.navbar.navbar-expand-lg.navbar-light.bg-light.justify-content-between
+        a.navbar-brand(href='/') Security Samples: HOST / TARGET
+      .container.mt-3
+        +content

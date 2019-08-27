@@ -24,11 +24,12 @@ block content
   if !!name
     p Hi, #{name}! (from cookie)
   p
-    | This application demonstrates how a CSRF attack 
-    | could exploit an application vulnerability
+    | This page is only rendered if a valid JWT is included with the request 
+    | via a cookie.
   p
     | Would you like to securely send money to your buddy?
   div
     +money_form
   div
+    p Log out to destroy the cookie that provides access to this page.
     +logout

@@ -18,7 +18,8 @@ block content
   if !!name
     p Hi, #{name}! (from cookie)
   p
-    | This application demonstrates how a CSRF attack 
-    | could exploit an application vulnerability
+    | Now we will demonstrate a simple login process with a cookie based JWT
+    | used to track / manage session for future requests.
+  p (jgraber/testpass)
   div
     +login_form

@@ -1,13 +1,23 @@
 extends layout.pug
 
 block content
-  h2 CSRF Vulnerability Samples
+  h2 CSRF
   ul
     li
-      a(href='/obvious') Demonstration 1
+      a(href='/obvious') Obvious CSRF Request
     li
-      a(href='/iframe') Demonstration 2 (IFRAME)
+      a(href='/iframe') Hidden CSRF Request (IFRAME)
     li
-      a(href='/get') Demonstration 3 (HTTP GET)
+      a(href='/get') Hidden CSRF Request, No Interaction (HTTP GET)
     li
-      a(href='/steal') Demonstration 4 (CSRF with JWT)
+      a(href='/steal') JWT Exploitation with CSRF (CSRF with JWT)
+
+  h2 Phishing
+  ul
+    li
+      a(href='/phishing') Basic Phishing Example
+
+  h2 XSS
+  ul
+    li
+      a(href='/search-link') Dangerous Link
