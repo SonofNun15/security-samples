@@ -1,7 +1,7 @@
-extends layout.pug
+extends ../layout.pug
 
 mixin cookie_form
-  form(method='post' action='/cookie')
+  form(method='post' action='/csrf/cookie')
     .form-group
       input.form-control(placeholder='Name' type='text' name='name' id='name')
 

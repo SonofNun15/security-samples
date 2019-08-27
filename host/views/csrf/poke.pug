@@ -1,10 +1,10 @@
-extends layout.pug
+extends ../layout.pug
 
 block content
   if !!name
     p Hi, #{name}! (from cookie)
   p
     | Ouch! You poked me!
-  a.btn.btn-primary(href='/') 
+  a.btn.btn-primary(href='/csrf/cookie') 
     i.fa.fa-hand-point-left
     span &nbsp; Back

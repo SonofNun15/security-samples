@@ -1,7 +1,7 @@
-extends layout.pug
+extends ../layout.pug
 
 mixin money_form 
-  form(method='post', action='/money')
+  form(method='post', action='/csrf/money')
     .form-group
       input.form-control(placeholder='Destination', type='text', name='dest', id='dest')
 
@@ -17,7 +17,7 @@ mixin money_form
         span &nbsp; Send money
 
 mixin logout
-  form(method='post' action='/logout')
+  form(method='post' action='/csrf/logout')
     button.btn.btn-danger(type='submit') Logout
 
 block content

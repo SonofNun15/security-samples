@@ -1,7 +1,7 @@
-extends layout.pug
+extends ../layout.pug
 
 mixin login_form
-  form(method='post', action='/login')
+  form(method='post', action='/csrf/login')
     .form-group
       input.form-control(placeholder='Username', type='text', name='username', id='username')
 
