@@ -6,16 +6,17 @@ mixin search_form
     input.form-control.mr-sm-2(type='text' id='query' name='query' placeholder='Search' value=query)
     button.btn.btn-primary(type='submit') Search
 block content
-  h3 Awesome Search Page! &#x1F600;
+  h3 Awesome Search Page!
   div
     +search_form
 
-  h4.mt-3 
-    | Results for 
-    // pug knows this is unsafe and by default sanitizes this response
-    span!= query
+  h4.mt-3 Results 
   div
     ul
       if !!results && results.length
         each result in results
             li= result
+      else
+        div
+          // pug knows this is unsafe and by default sanitizes this response
+          i No results for !{query}

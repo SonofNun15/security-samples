@@ -1,0 +1,11 @@
+extends layout.pug
+
+block content
+  p
+    | This link is dangerous, but if I can convince you to click it I can
+    | run malicious JS within a target application.
+    | I could use a phishing site, or a friendly site you are interested in,
+    | or a phishing email to try to trick you into clicking this link.
+  div
+    a.btn.btn-primary(href='http://localhost:3000/xss/search?query=<script+type%3D"application%2Fjavascript">alert%28%27xss%27%29%3B<%2Fscript>')
+      | &#x1F600;
