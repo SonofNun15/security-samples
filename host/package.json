@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/index.ts",
+    "debug": "node -r ts-node/register --inspect src/index.ts",
     "build": "tsc && npm run build:webpack",
     "build:webpack": "webpack --config webpack.config.js",
     "clean": "rimraf ./build ./assets/generated",
