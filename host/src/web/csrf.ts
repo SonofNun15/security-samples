@@ -5,6 +5,10 @@ import auth from '../auth'
 
 const router = express.Router()
 
+// ####################################################
+// # Play with cookies and demonstrate how CSRF works #
+// ####################################################
+
 router.get('/cookie', (req, res) => {
   logGet('/cookie', req)
   const name = req.cookies.name
@@ -35,6 +39,10 @@ router.get('/login', (req, res) => {
   const name = req.cookies.name
   res.render('csrf/login', { name })
 })
+
+// ###############################################
+// # Secure section of application requiring JWT #
+// ###############################################
 
 router.post('/login', (req, res) => {
   logPost('/login', req)
@@ -73,11 +81,19 @@ router.post('/logout', (req, res) => {
   res.redirect('/csrf/login')
 })
 
+// ####################################
+// # Explore cookie security features #
+// ####################################
+
 router.get('/adv-cookie', (req, res) => {
   logGet('/adv-cookie', req)
   const name = req.cookies.name
   res.render('csrf/adv-cookie', { name })
 })
+
+// #####################################
+// # Using Local Storage to avoid CSRF #
+// #####################################
 
 router.get('/storage', (req, res) => {
   logGet('/csrf/storage', req)
