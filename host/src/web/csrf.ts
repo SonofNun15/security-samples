@@ -79,4 +79,32 @@ router.get('/adv-cookie', (req, res) => {
   res.render('csrf/adv-cookie', { name })
 })
 
+router.get('/storage', (req, res) => {
+  logGet('/csrf/storage', req)
+  res.render('csrf/storage')
+})
+
+router.post('/login-ajax', (req, res) => {
+  logPost('/csrf/login-ajax', req)
+  const username = req.body.username
+  const password = req.body.password
+  if (auth.login({ username, password })) {
+    res.send({ jwt: auth.jwt })
+  } else {
+    res.sendStatus(401)
+  }
+})
+
+router.post('/money-ajax', (req, res) => {
+  logPost('/csrf/money-ajax', req)
+  const authHeader = req.header('Authentication')
+
+  if (!!authHeader && auth.verifyHeader(authHeader)) {
+    sendLog(`SENDING $${req.body.amount} TO "${req.body.dest}"!!!`)
+    res.sendStatus(204)
+  } else {
+    res.sendStatus(401)
+  }
+})
+
 export default router

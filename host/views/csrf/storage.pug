@@ -1,0 +1,43 @@
+extends ../layout.pug
+
+mixin login_form
+  form#login-form
+    .form-group
+      input.form-control(placeholder='Username', type='text', name='username', id='username')
+
+    .form-group
+      input.form-control(placeholder='Password', type='password', name='password', id='password')
+
+    .form-group
+      button.btn.btn-primary(type='submit') Login
+
+mixin money_form
+  form#money-form
+    .form-group
+      input.form-control(placeholder='Destination', type='text', name='dest', id='dest')
+
+    .form-group
+      .input-group
+        .input-group-prepend
+          span.input-group-text $
+        input.form-control(placeholder='Amount', type='number', name='amount', id='amount')
+
+    .form-group
+      button.btn.btn-primary(type='submit')
+        i.fa.fa-money-bill-wave
+        span &nbsp; Send money
+
+mixin logout
+  button.btn.btn-danger#logout-button Logout
+
+block content
+  p
+    | AJAX page that stores the JWT so that we can avoid CSRF triggered by
+    | cookies being automatically attached to every request.
+  div
+    +login_form
+  div#money-container(style={ display: 'none' })
+    p Send money to friends!
+    +money_form
+    +logout
+  

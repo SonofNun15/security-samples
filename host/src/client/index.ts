@@ -1,5 +1,6 @@
 import { getCookieButton } from './controls'
 import { displayCookie } from './cookie'
+import { wireUpStoragePage } from './storage'
 
 const cookieButton = getCookieButton()
 if (!!cookieButton) {
@@ -7,3 +8,5 @@ if (!!cookieButton) {
     displayCookie()
   }
 }
+
+wireUpStoragePage()

@@ -30,6 +30,17 @@ class Authentication {
       return false
     }
   }
+
+  verifyHeader(authHeader: string) {
+    const bearerRegex = /^Bearer (\w+\.\w+\.\w+)$/
+    const results = bearerRegex.exec(authHeader)
+
+    if (!!results && results.length >= 2) {
+      return this.verify(results[1])
+    }
+
+    return false
+  }
 }
 
 export default new Authentication()
