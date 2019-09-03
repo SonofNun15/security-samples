@@ -6,7 +6,8 @@ const router = express.Router()
 router.get('/search', (req, res) => {
   logGet('/xss/search', req)
 
-  const query = req.param('query')
+  // const query = req.param('query')
+  const query = req.query['query']
 
   // Turn off browser XSS protection for the sake of this demonstration
   res.header('X-XSS-Protection', '0')
