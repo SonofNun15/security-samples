@@ -1,0 +1,28 @@
+extends ../layout.pug
+
+mixin comment_form
+  form(method='post' action='/xss/comments')
+    .form-group
+      textarea.form-control(placeholder='Comments' name='comments' id='comments' rows='3')
+
+    .form-group
+      button.btn.btn-primary(type='submit') Submit
+
+mixin delete_form
+  button.btn.btn-danger#delete-comments Delete comments 
+
+block content
+  h2 Comments from all of you!
+  div
+    if (!!comments)
+      each comment in comments
+        .card.mb-2
+          .card-body!= comment
+    else
+      p
+        i.text-muted No comments
+  div 
+    h3 Add your own comment!
+    +comment_form
+  div
+    +delete_form

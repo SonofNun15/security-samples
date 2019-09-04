@@ -21,3 +21,7 @@ export function getMoneyForm() {
 export function getLogoutButton() {
   return document.getElementById('logout-button')
 }
+
+export function getDeleteCommentsButton() {
+  return document.getElementById('delete-comments')
+}

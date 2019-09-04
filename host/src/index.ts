@@ -1,10 +1,18 @@
+import storage from 'node-persist'
+
 import { start } from './web'
 import { maybeParseInt } from './utils'
 import secret from './auth/secret'
 
-secret()
+async function run() {
+  secret()
 
-const default_port = 3000
-const port: number = maybeParseInt(process.env.PORT) || default_port
+  await storage.init({ dir: 'storage' })
 
-start(port)
+  const default_port = 3000
+  const port: number = maybeParseInt(process.env.PORT) || default_port
+
+  start(port)
+}
+
+run()

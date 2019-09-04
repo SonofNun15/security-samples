@@ -68,6 +68,10 @@ export function start(port: number) {
     res.sendStatus(204)
   })
 
+  app.get('/enum-storage-script', (_req, res) => {
+    res.render('enum-storage', { dangerousScript: getDangerousLocalStorageScript(hostname, port) })
+  })
+
   console.log(`- listening on port ${port} `)
   app.listen(port)
 }

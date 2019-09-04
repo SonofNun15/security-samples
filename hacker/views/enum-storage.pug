@@ -1,0 +1,8 @@
+extends layout.pug
+
+block content
+  p 
+    | This script sends me your local storage if I can store this on your site
+    | and get it to be displayed on the page.
+
+  textarea.form-control(rows='5' readonly)= dangerousScript
