@@ -4,7 +4,8 @@ import csrfRouter from './csrf'
 import xssRouter from './xss'
 import config from './config'
 import { logGet } from '../utils/log'
-import auth from '../auth'
+
+const hostname = 'localhost'
 
 export function start(port: number) {
   const app = express()
@@ -12,7 +13,7 @@ export function start(port: number) {
   config(app)
 
   app.use('/xss', xssRouter)
-  app.use('/csrf', csrfRouter)
+  app.use('/csrf', csrfRouter(hostname, port))
 
   app.get('/', (req, res) => {
     logGet('/', req)
