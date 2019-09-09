@@ -20,7 +20,9 @@ router.post('/cookie', (req, res) => {
   const name = req.body.name
   const httpOnly = !!req.body.httpOnly
   const path = req.body.path || '/'
-  res.cookie('name', name, { httpOnly, path })
+  const secure = !!req.body.secure
+  const sameSite = req.body['same-site'] || 'lax'
+  res.cookie('name', name, { httpOnly, path, sameSite, secure })
   res.render('csrf/cookie', { name })
 })
 

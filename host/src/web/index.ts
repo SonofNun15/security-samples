@@ -1,4 +1,7 @@
 import express from 'express'
+import https from 'https'
+
+import { getKey, getCert } from '../auth/ssl'
 
 import csrfRouter from './csrf'
 import xssRouter from './xss'
@@ -7,6 +10,11 @@ import { logGet } from '../utils/log'
 import auth from '../auth'
 
 export function start(port: number) {
+  const serverOptions = {
+    key: getKey(),
+    cert: getCert(),
+  }
+
   const app = express()
 
   config(app)
@@ -21,5 +29,6 @@ export function start(port: number) {
   })
 
   console.log(`- listening on port ${port} `)
-  app.listen(port)
+  app.listen(2999)
+  https.createServer(serverOptions, app).listen(port)
 }

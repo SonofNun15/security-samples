@@ -27,8 +27,17 @@ mixin cookie_form
         
     .form-group
       .form-check
-        input.form-check-input(type='checkbox' id='secure' name='secure' disabled)
+        input.form-check-input(type='checkbox' id='secure' name='secure')
         label.form-check-label(for='secure') Secure
+
+    .form-group
+      label(for='lax') Same Site:
+      .form-check
+        input.form-check-input(type='radio' id='lax' name='same-site' value='lax')
+        label.form-check-label(for='lax') Lax
+      .form-check
+        input.form-check-input(type='radio' id='strict' name='same-site' value='strict')
+        label.form-check-label(for='strict') Strict
 
     .form-group
       button.btn.btn-primary(type='submit') Set cookie
