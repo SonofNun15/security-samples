@@ -16,19 +16,19 @@ mixin cookie_form
         input.form-control(placeholder='Path' type='text' name='path' id='path' value='/')
 
     .form-group
-      .custom-control.custom-checkbox
-        input.custom-control-input(type='checkbox' id='httpOnly' name='httpOnly')
-        label.custom-control-label(for='httpOnly') HttpOnly
+      .form-check
+        input.form-check-input(type='checkbox' id='httpOnly' name='httpOnly')
+        label.form-check-label(for='httpOnly') HttpOnly
 
     .form-group
-      .custom-control.custom-checkbox
-        input.custom-control-input(type='checkbox' id='signed' name='signed' disabled)
-        label.custom-control-label(for='signed') Signed
+      .form-check
+        input.form-check-input(type='checkbox' id='signed' name='signed' disabled)
+        label.form-check-label(for='signed') Signed
         
     .form-group
-      .custom-control.custom-checkbox
-        input.custom-control-input(type='checkbox' id='secure' name='secure' disabled)
-        label.custom-control-label(for='secure') Secure
+      .form-check
+        input.form-check-input(type='checkbox' id='secure' name='secure' disabled)
+        label.form-check-label(for='secure') Secure
 
     .form-group
       button.btn.btn-primary(type='submit') Set cookie
