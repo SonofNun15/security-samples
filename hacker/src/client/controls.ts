@@ -9,3 +9,11 @@ export function getResponseControl() {
 export function getCsrfForm() {
   return document.getElementById('csrf-form') as HTMLFormElement
 }
+
+export function getAntiForgeryForm() {
+  return document.getElementById('anti-forgery-form') as HTMLFormElement
+}
+
+export function getCsrfTokenInput() {
+  return document.getElementById('csrf-token') as HTMLInputElement
+}

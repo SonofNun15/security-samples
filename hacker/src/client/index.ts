@@ -1,4 +1,5 @@
 import { getDogButton, getResponseControl, getCsrfForm } from './controls'
+import bustAntiForgeryToken from './anti_forgery'
 
 function displayResponse() {
   const responseCtrl = getResponseControl()
@@ -20,3 +21,5 @@ const csrfForm = getCsrfForm()
 if (csrfForm) {
   csrfForm.submit()
 }
+
+bustAntiForgeryToken()

