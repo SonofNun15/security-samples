@@ -26,6 +26,10 @@ export function start(port: number) {
     res.render('get')
   })
 
+  app.get('/post', (_req, res) => {
+    res.render('post')
+  })
+
   app.get('/steal', (_req, res) => {
     res.render('steal')
   })

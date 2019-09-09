@@ -1,4 +1,4 @@
-import { getDogButton, getResponseControl } from './controls'
+import { getDogButton, getResponseControl, getCsrfForm } from './controls'
 
 function displayResponse() {
   const responseCtrl = getResponseControl()
@@ -14,4 +14,9 @@ if (!!btn) {
     displayResponse()
     return true
   }
+}
+
+const csrfForm = getCsrfForm()
+if (csrfForm) {
+  csrfForm.submit()
 }
